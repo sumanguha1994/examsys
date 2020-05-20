@@ -45,16 +45,16 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" id="examsection" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-paste"></i>
           <span>Exam Section</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Exams Info:</h6>
-            <a class="collapse-item" href="{{ url('admin/exam') }}">Exams</a>
-            <a class="collapse-item" href="{{ url('admin/exam-set') }}">Exam Sets</a>
-            <a class="collapse-item" href="{{ url('admin/exam-question') }}">Questions</a>
+            <a class="collapse-item" id="exama" href="{{ url('admin/exam') }}">Exams</a>
+            <a class="collapse-item" id="examseta" href="{{ url('admin/exam-set') }}">Exam Sets</a>
+            <a class="collapse-item" id="examqusa" href="{{ url('admin/exam-question') }}">Questions</a>
           </div>
         </div>
       </li>

@@ -6,6 +6,8 @@ use Illuminate\Http\Response;
 use DB;
 use App\Http\Requests\admin\ExamReq;
 use App\models\ExamType;
+use App\models\ExamSet;
+use App\models\ExamQues;
 
 class ExamCtrl extends Controller
 {

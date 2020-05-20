@@ -62,6 +62,7 @@ class ExamQuesCtrl extends Controller
 
     public function destroy($id)
     {
-        //
+        $delete  = ExamQues::where('id', $id)->delete();
+        return response()->json($delete);
     }
 }

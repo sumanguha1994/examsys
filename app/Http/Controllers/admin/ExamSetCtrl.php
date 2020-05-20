@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use App\models\ExamType;
 use App\Http\Requests\admin\ExamSetReq;
 use App\models\ExamSet;
+use App\models\ExamQues;
 use DB;
 
 class ExamSetCtrl extends Controller
@@ -37,7 +38,8 @@ class ExamSetCtrl extends Controller
 
     public function show($id)
     {
-        //
+        $value = ExamSet::where('exam_id', $id)->select('*')->get()->toArray();
+        return response()->json($value);
     }
 
     public function edit($id)
@@ -52,6 +54,13 @@ class ExamSetCtrl extends Controller
 
     public function destroy($id)
     {
-        //
+        $delete = false;
+        if(ExamSet::where('id', $id)->delete()){
+            ExamQues::where('exam_set_id', $id)->delete();
+            $delete = true;
+        }else{
+            $delete = false;
+        }
+        return response()->json($delete);
     }
 }

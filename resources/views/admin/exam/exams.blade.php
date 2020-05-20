@@ -84,5 +84,14 @@
     </div>
   </div>
 </form>
+<script id="customecode">
+  $(document).ready(function(){
+    $('#customecode').hide();
+  });
+  function deletefunc(id)
+  {
+    alert(id);
+  }
+</script>
 <!-- /.container-fluid -->
 @endsection

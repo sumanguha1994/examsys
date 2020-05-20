@@ -89,5 +89,25 @@
     </div>
   </div>
 </form>
+<script id="customecode">
+  $(document).ready(function(){
+    $('#examsection').removeClass('collapsed');
+    $('#examsection').removeAttr('aria-expanded', "true");
+    $('#collapseUtilities').addClass('collapse show');
+    $('#examseta').addClass('collapse-item active');
+    $('#customecode').hide();
+  });
+  //delete function
+  function deletefunc(id)
+  {
+    $.get('exam-set-delete/'+id, function(data){
+      if(data){
+        location.reload();
+      }else{
+        alert('Something Went Wrong!!');
+      }
+    });
+  }
+</script>
 <!-- /.container-fluid -->
 @endsection

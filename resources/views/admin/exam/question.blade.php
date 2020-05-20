@@ -75,7 +75,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="name">Exam Name</label>
-                    <select name="exam_id" id="exam_id">
+                    <select name="exam_id" id="exam_id" onchange="getsetnos(this.value)">
                         <option value="null" selected disabled>Choose One--</option>
                         @foreach($exams as $e)
                             <option value="{{ $e->id }}">{{ $e->exam_name }}</option>
@@ -86,8 +86,6 @@
                     @endif
                 </div>
                 <div class="col-md-6 examset" style="display:none;">
-                  <label for="name">Set No.</label>
-                  <input type="text" name="exam_set_no" id="exam_set_no" class="form-control" placeholder="Exam Set No.">
                 </div>
               </div>
             </div>
@@ -150,5 +148,38 @@
     </div>
   </div>
 </form>
+<script id="customcode">
+  $(document).ready(function(){
+    $('#customcode').hide();
+  });
+  function getsetnos(examid)
+  {
+    let optionstr;
+    $.get('get-setnos/'+examid, function(data){
+      $('.examset').html('');
+      if(data.length > 0){
+        $('.examset').removeAttr('style');
+        optionstr = '<option value="null" selected disabled>Choose One--</option>'
+        for(let i = 0;i < data.length;i++)
+        {
+          optionstr += '<option value="'+data[i]["id"]+'" data-examid="'+data[i]["exam_id"]+'" data-setname="'+data[i]["set_name"]+'">';
+          optionstr += data[i]['set_name'];
+          optionstr += '</option>';
+        }
+        $('.examset').append('<label for="name" id="labelsetno">Set No.</label>');
+        $('.examset').append('<select name="setno" id="setno">'+optionstr+'</select>');
+      }else{
+        alert("Something Went Wrong!!");
+      }
+    });
+  }
+  //delete function 
+  function deletefunc(id)
+  {
+    $.get('question-delete/'+id, function(data){
+      location.reload();
+    });
+  }
+</script>
 <!-- /.container-fluid -->
 @endsection
